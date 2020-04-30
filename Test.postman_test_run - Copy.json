@@ -1,0 +1,110 @@
+{
+	"id": "78af1f38-c30f-4eff-9aff-3ed1f6241e62",
+	"name": "Test",
+	"timestamp": "2020-04-29T19:43:15.436Z",
+	"collection_id": "1bd51b40-adb8-40ff-8588-2ba3732e14f6",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 7,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9689dd6d-87c0-4ebd-be47-0f80f808bc43",
+			"name": "1. ReqresTestL",
+			"url": "https://reqres.in/api/users?page=2",
+			"time": 55,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is:": true,
+				"Response string Validation is completed": true,
+				"Response Body matches string result": true,
+				"Complete Response payload Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is:": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response string Validation is completed": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response Body matches string result": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Complete Response payload Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				55
+			],
+			"allTests": [
+				{
+					"Status code is:": true,
+					"Response string Validation is completed": true,
+					"Response Body matches string result": true,
+					"Complete Response payload Check": true
+				}
+			]
+		},
+		{
+			"id": "a04f1977-e8e1-4e6a-ad34-50796ca2344b",
+			"name": "2. Reqres Create User",
+			"url": "https://reqres.in/api/users",
+			"time": 156,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response matches string result": true,
+				"Response time is less than 6 secs": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response matches string result": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 6 secs": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				156
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response matches string result": true,
+					"Response time is less than 6 secs": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 211,
+	"collection": {
+		"requests": [
+			{
+				"id": "9689dd6d-87c0-4ebd-be47-0f80f808bc43",
+				"method": "GET"
+			},
+			{
+				"id": "a04f1977-e8e1-4e6a-ad34-50796ca2344b",
+				"method": "POST"
+			}
+		]
+	}
+}
