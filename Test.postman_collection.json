@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "9219d234-5243-4df4-b359-ac0b53a42ff1",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "2. Reqres Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "13a7b4aa-2120-4660-b784-27a8e6b2616e",
+						"exec": [
+							"var names= pm.environment.get(\"names\");",
+							"",
+							"if(names && names.length > 0){",
+							"    postman.setNextRequest(\"https://reqres.in/api/users\");",
+							"}",
+							"else{",
+							"    postman.setNextRequest(null);",
+							"    //pm.sendRequest(\"ReqresTestL\");",
+							"}",
+							"",
+							"let jsonData = pm.response.json();",
+							"    //console.log(jsonData.page);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response matches string result\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"id\");",
+							"     pm.expect(pm.response.text()).to.include(\"createdAt\");",
+							"});",
+							"pm.test(\"Response time is less than 6 secs\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(6000);",
+							"});",
+							"",
+							"",
+							"    ",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5e00391f-af22-4c00-96be-b60996b88289",
+						"exec": [
+							"var names= pm.environment.get(\"names\");",
+							"if(!names){",
+							"    names = [\"morpheus\",\"Suraj\"];",
+							"}",
+							"",
+							"var currentName = names.shift();",
+							"pm.environment.set(\"name\",currentName );",
+							"pm.environment.set(\"names\",names );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"job\": \"leader\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. ReqresTestL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "daaf328c-e3d6-41af-a83c-500485540b8a",
+						"exec": [
+							"",
+							"",
+							"    let jsonData = pm.response.json()",
+							"    console.log(jsonData.page);",
+							"",
+							"pm.test(\"Status code is:\", function () {",
+							"    pm.response.to.have.status(200);",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"Response string Validation is completed\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.page).to.eql(2);",
+							"      pm.expect(jsonData.data[0].email).to.eql(\"michael.lawson@reqres.in\");",
+							"});",
+							"pm.test(\"Response Body matches string result\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"per_page\");",
+							"     pm.expect(pm.response.text()).to.include(\"total\");",
+							"    ",
+							"});",
+							"",
+							"",
+							"pm.test(\"Complete Response payload Check\", function () {",
+							"   pm.response.to.have.body(",
+							"       {",
+							"    \"page\": 2,",
+							"    \"per_page\": 6,",
+							"    \"total\": 12,",
+							"    \"total_pages\": 2,",
+							"    \"data\": [",
+							"        {",
+							"            \"id\": 7,",
+							"            \"email\": \"michael.lawson@reqres.in\",",
+							"            \"first_name\": \"Michael\",",
+							"            \"last_name\": \"Lawson\",",
+							"            \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/follettkyle/128.jpg\"",
+							"        },",
+							"        {",
+							"            \"id\": 8,",
+							"            \"email\": \"lindsay.ferguson@reqres.in\",",
+							"            \"first_name\": \"Lindsay\",",
+							"            \"last_name\": \"Ferguson\",",
+							"            \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/araa3185/128.jpg\"",
+							"        },",
+							"        {",
+							"            \"id\": 9,",
+							"            \"email\": \"tobias.funke@reqres.in\",",
+							"            \"first_name\": \"Tobias\",",
+							"            \"last_name\": \"Funke\",",
+							"            \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/vivekprvr/128.jpg\"",
+							"        },",
+							"        {",
+							"            \"id\": 10,",
+							"            \"email\": \"byron.fields@reqres.in\",",
+							"            \"first_name\": \"Byron\",",
+							"            \"last_name\": \"Fields\",",
+							"            \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/russoedu/128.jpg\"",
+							"        },",
+							"        {",
+							"            \"id\": 11,",
+							"            \"email\": \"george.edwards@reqres.in\",",
+							"            \"first_name\": \"George\",",
+							"            \"last_name\": \"Edwards\",",
+							"            \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/mrmoiree/128.jpg\"",
+							"        },",
+							"        {",
+							"            \"id\": 12,",
+							"            \"email\": \"rachel.howell@reqres.in\",",
+							"            \"first_name\": \"Rachel\",",
+							"            \"last_name\": \"Howell\",",
+							"            \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/hebertialmeida/128.jpg\"",
+							"        }",
+							"    ],",
+							"    \"ad\": {",
+							"        \"company\": \"StatusCode Weekly\",",
+							"        \"url\": \"http://statuscode.org/\",",
+							"        \"text\": \"A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things.\"",
+							"    }",
+							"}",
+							"       );",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
